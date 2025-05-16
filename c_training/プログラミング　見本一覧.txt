@@ -1,0 +1,370 @@
+・２つの数字と演算子を入力すると計算するプログラミング
+
+#include<stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main(int argc,char** argv){
+	int x,y;
+	char z;
+	int ans;
+	
+	printf("数値１を入力してください：\n");
+	scanf("%d",&x);
+	
+	if(x>0){
+		printf("数値2を入力してください：\n");
+		scanf("%d",&y);
+		if(y>0){
+			printf("演算子を入力してください：\n");
+			scanf(" %c",&z);
+			if(z == '+' || z == '-' || z == '/' || z == '*' ){
+				if(z == '+'){
+					printf("計算結果は%d + %d = %d\nです。",x,y,x+y);
+				}else if(z == '-'){
+					ans=(x-y);
+					printf("計算結果は%d - %d = %d\nです。",x,y,x-y);
+				}else if(z == '/' ){
+					ans=(x/y);
+					printf("計算結果は%d /%d = %d\nです。",x,y,x/y);
+				}else if(z == '*'){
+					ans=(x*y);
+					printf("計算結果は%d * %d = %d\nです。",x,y,x*y);
+				}
+			}
+		}
+	}
+}
+
+・1から100までの数値を乱数で発生させ、以下の処理をする。
+
+50以下の場合”50以下です。”と表示。
+偶数の場合、”偶数です。”と表示。
+ただし、50以下でかつ偶数の場合、”50以下の偶数です。”と表示。
+
+#include<stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main(int argc,char** argv){
+	int n;
+	srand((unsigned)time(NULL));
+    n = rand() % 100 + 1;
+    if(n%2==0&&n>50){
+    printf("数値：%d\n偶数です：",n );
+    }if(n<=50&&n%2==1){
+    	printf("数値：%d\n５０以下です：",n);
+    }if(n%2 == 0 && n<=50){
+    	printf("数値：%d\n５０以下の偶数です。:",n);
+    }
+    return 0;
+    
+}
+
+
+・閏年の計算方法
+#include<stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main(int argc,char** argv)
+{
+	int n;
+	
+	/* 数値入力 */
+	printf("数値を入力してください：");
+	scanf("%d",&n);
+
+	/* 年が400の時 */
+    	if( n%400 == 0 ) {
+   		 printf("数値：%d\nうるう年ですヨ：",n );
+	}
+	/* 4の倍数かつ100と400の倍数でない時 */
+    	if( ( n%4 == 0) && (n%100 != 0 ) && ( n%400 != 0 ) )
+	{
+    		printf("数値：%d\nうるう年です：",n );
+   	}
+	
+	if( ( n%4 != 0 ) || ( ( n%100 == 0) && ( n%400 != 0 ) ) )
+	{
+    		printf("数値：%d\nうるう年ではありません：",n);
+    	}
+    return 0;
+
+・九九を表示する
+int main(int argc,char** argv){
+    int i,j;
+    for(i=1;i<=9;i++){
+    	for(j=1;j<=9;j++){
+    		printf("%d*%d=%d ",i,j,j*i);
+    		if(j%9==0){
+    			printf("%d*%d=%d\n",i,j,j*i);
+    		}
+    	}
+    }
+	return 0;
+}
+
+
+・以下のループを作る書き方
+	int i, j;
+	for (i = 1; i <= 10; i++) {
+		for (j = 0; j < i; j++) {
+			 printf("■");
+		}
+			 for(j=10;j>i;j--){
+			 	printf("□");
+		}
+		 printf("\n");
+	}
+  return 0;
+}
+
+・以下のループを作る方法
+	int i, j;
+	for (i = 0; i <= 9; i++) {
+		for (j = 0; j < i; j++) {
+			 printf("■");
+		}printf("□");
+		for(j=9;j>i;j--){
+			printf("■");
+		}
+		 printf("\n");
+	}
+  return 0;
+}
+
+・乱数表示と最小値を表す方法
+	int a,i,min;
+	min=100;
+	srand((unsigned)time(NULL));
+	for(i=0;i<5;i++){
+	a = rand() % 100 + 1;
+    	printf("%d\n",a);
+    	if(min>a){
+    		min=a;
+    	}
+	}
+	printf("最小値＊：%d",min);
+	return 0;
+}
+
+
+
+・乱数表示して最小値、最大値（関数表示）
+	int data[10];
+	int i;
+	int max,min;
+	max=0;
+	min=10;
+	srand((unsigned)time(NULL));
+	for(i=0;i<10;i++){
+		data[i]=rand()%10+1;
+		printf("%d ",data[i]);
+		if(min>data[i]){
+		min=data[i];
+		}if(max<data[i]){
+		max=data[i];
+		}
+	}
+	printf("\n最大値：%d",max);
+	printf("\n最小値：%d\n",min);
+	return 0;
+}
+
+・乱数表示し、奇数と偶数を表示させる	int loop;
+	int data[10];
+	int even[10],odd[10];
+
+	srand((unsigned)time(NULL));
+	for(loop=0;loop<10;loop++)
+	{
+		data[loop]=rand()%10+1;
+		printf("%d ",data[loop]);
+	}
+	printf("\n");
+
+	printf("偶数: ");
+
+	for(loop=0;loop<10;loop++)
+	{
+		if(data[loop]%2 == 0)
+		{
+			even[loop]=data[loop];
+			printf("%d ",even[loop]);
+		}
+	}
+	
+	printf("\n");
+	
+	printf("奇数: ");
+	
+	for(loop=0;loop<10;loop++)
+	{
+		if(data[loop]%2 == 1)
+		{
+			odd[loop]=data[loop];
+			printf("%d ",odd[loop]);
+		}
+	}
+	printf("\n");
+
+3×3の二次元配列を作成し、それぞれに0から9の乱数を発生させ、その内容と、数値の最大値・最小値を表示
+	int data[3][3];
+	int m,n;
+	int max,min;
+	max=0;
+	min=9;
+	srand((unsigned)time(NULL));
+	for(m=0;m<3;m++){
+		for(n=0;n<3;n++){
+			data[m][n]=rand()%9+1;
+		printf("%d ",data[m][n]);
+		if(max<data[m][n]){
+			max=data[m][n];
+		}
+		if(min>data[m][n]){
+			min=data[m][n];
+		}
+		}
+		printf("\n");
+	}
+	
+	printf("\n最大値：%d",max);
+	printf("\n最小値：%d",min);
+return 0;
+}
+
+
+
+・入力した値の和と差を求める関数と配列変数
+//	関数のプロトタイプ宣言
+int add(int,int);
+int sub(int,int);
+
+int main(int argc,char** argv){
+    int a,b;
+    int result;
+    int rez;
+    printf("a=");
+    scanf("%d",&a);		//	1つ目の数、aを入力
+    printf("b=");
+    scanf("%d",&b);		//	2つ目の数、bを入力
+    result = add(a,b);	//	3つ目の数、cを入力
+    rez =sub(a,b);
+    printf("%d + %d = %d\n",a,b,result);	//	計算結果を出力
+    printf("%d - %d = %d\n",a,b,rez);	//	計算結果を出力
+    return 0;
+}
+
+//	二つの整数の和を求める関数
+int add(int n1,int n2){
+    return n1 + n2;
+}
+//	二つの整数の差を求める関数
+int sub(int n3,int n4){
+	return n3-n4;
+}
+・円の半径を入力すると円周と面積が分かる
+double circumference(double);
+double area(double);
+
+int main(int argc,char** argv){
+	double n;
+	printf("円の半径を入力してください。：");
+	scanf("%lf",&n);
+	printf("円の円周は%lfです。\n",circumference(n));
+	printf("円の面積は%lfです。\n",area(n));
+	return 0;
+}
+
+
+double circumference(double n){
+	return 2 * n * 3.14;
+}
+
+double area(double n){
+	return 3.14 * n * n;
+}
+
+
+・入力した値の絶対値を出力する
+int getabsolute(int);
+
+int main(int argc,char** argv){
+	int n;
+	printf("整数を入力してください：");
+	scanf("%d",&n);
+	printf("%d\n",getabsolute(n));
+	return 0;
+}
+
+int getabsolute(int n){
+	if(n<0){
+		return (-2) * n + n;
+	}else{
+		return n;
+	}
+}
+・二つの整数を入力して、■を出す
+void square(m,n);
+
+int main(int argc,char** argv){
+	int m,n;
+	printf("たて：");
+	scanf("%d",&m);
+	printf("よこ：");
+	scanf("%d",&n);
+	square(m,n);
+	return 0;
+}
+
+void square(int m,int n){
+	if(m>0&&n>0){
+		int i,j;
+		for(j=0;j<n;j++){
+			for(i=0;i<m;i++){
+			printf("■");
+			}
+			printf("\n");
+		}
+	}
+}
+
+・乱数表示とその乱数の２倍を表示する（関数、ポインタを利用）
+
+#define SIZE  5//SIZEという文字を５に置換する
+void ziyuu(int*);
+int nibai(int);
+
+
+int main(int argc,char** argv){
+	int a[SIZE];
+	int i;//２倍を求めるときだけ使う
+	
+	srand((unsigned)time(NULL));//乱数の初期化
+	
+	printf("発生した乱数：");
+	ziyuu(a);
+	
+	printf("\n2倍した値：");
+	
+	
+	for(i=0;i<SIZE;i++){
+		printf("%d ",nibai(a[i]));//2倍した乱数の表示
+	}
+	return 0;
+}
+
+
+
+void ziyuu(int* m){//乱数を生成する
+        int i;
+        for(i=0;i<SIZE;i++){
+        m[i]=rand()%10+1;
+        printf("%d ",m[i]);//乱数の表示
+	}
+}
+int nibai(int n){//乱数を２倍にする
+	return 2 * n;
+}
